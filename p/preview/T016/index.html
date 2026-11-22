@@ -95,6 +95,17 @@ body{background:#F6F7F1;background-image:none}
 .res .big{font-family:Jua,sans-serif;font-size:64px;color:#D2322B;line-height:1.1}
 .res .big small{font-size:24px;color:var(--ink)}
 .res .gd{font-weight:800;font-size:17px;margin:4px 0 12px}
+.ch{display:block;width:150px;margin:6px auto -4px;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+.ring{display:inline-block;border:5px solid #D2322B;border-radius:50%;padding:0 18px;transform:rotate(-4deg)}
+.res .cm{font-size:15px;margin:-6px 0 12px}
+.marks{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:6px 0 4px}
+.m{display:flex;flex-direction:column;align-items:center;font-size:17px;background:#F6F7F1;border-radius:8px;padding:3px 0}
+.m i{font-style:normal;font-size:10px;font-weight:800;color:var(--soft)}
+.m.no{background:#FFE9E4}
+.fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9}
+.fx span{position:absolute;top:-40px;animation:fall 2.4s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(260deg);opacity:.2}}
+@keyframes pop{from{transform:scale(.3)}to{transform:scale(1)}}
 .shareb{font:inherit;font-size:17px;font-weight:800;background:#C6F432;border:3px solid var(--ink);border-radius:999px;padding:10px 26px;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
 .res .rs{font-size:13px;color:var(--soft);margin-top:12px}
 .q .o.sel{border-color:var(--ink);background:#fff;font-weight:800}
@@ -157,7 +168,7 @@ body{background:#F6F7F1;background-image:none}
   <div class="q" data-n="19"><div class="h">19번 <span class="lvq">상</span></div><h3>셀렉 날 추가금을 막으려면?</h3><button class="o">① 셀렉 날 안 가기</button><button class="o">② 마음에 드는 건 다 고르기</button><button class="o ans">③ 기본 보정본 장수를 먼저 확인하고 그 안에서 고르기</button><button class="o">④ 원본을 안 받기</button><button class="o">⑤ 앨범을 아예 안 하기</button><div class="why"><b>정답 ③</b> 장당 약 3.3만원이라 많이 고르면 100만원 넘게 나오기도 해요.</div></div>
   <div class="q" data-n="20"><div class="h">20번 <span class="lvq">중</span></div><h3>웨딩홀 "잔여타임"은?</h3><button class="o">① 웨딩홀을 정리하는 시간</button><button class="o ans">② 아직 예약이 안 찬 시간대</button><button class="o">③ 신부대기실을 쓰는 시간</button><button class="o">④ 하객이 식사하는 시간</button><button class="o">⑤ 예식 끝나고 남는 시간</button><div class="why"><b>정답 ②</b> 날짜가 가까운데 비어 있는 시간이라 할인을 받기 쉬운 편이에요.</div></div>
   <div class="nav2"><button id="prev">이전</button><button id="next">다음</button></div>  <button id="grade" class="gradeb" disabled>채점하기</button><p id="left" class="leftm"></p></section>
- <section id="result" class="view"><div class="res"><div class="rt">결혼 준비 영역 성적표</div><input id="nm" placeholder="이름 (예: 예신이)" maxlength="10"><div class="big2"><b id="pt">0</b>점<small> / 100</small></div><div id="gd" class="gd"></div><button id="share" class="shareb">결과 보내기</button><p class="rs">예랑이, 예신이 서로 보내서 점수를 비교해 보세요!</p></div><h2>틀린 문제 다시 보기</h2><div id="wrong"></div><button class="big go" data-go="exam" id="again"><b>다시 풀기</b></button><button class="big go alt" data-go="dict"><b>📒 용어 정리본 보기</b><span>틀린 용어를 정리본에서 확인해요</span></button></section>
+ <section id="result" class="view"><div class="res"><div class="rt">결혼 준비 영역 성적표</div><input id="nm" placeholder="이름 (예: 예신이)" maxlength="10"><img id="ch" class="ch" alt=""><div class="big2"><span class="ring"><b id="pt">0</b>점</span><small> / 100</small></div><div id="gd" class="gd"></div><div id="cm" class="cm"></div><div id="marks" class="marks"></div><p class="rs">📸 캡처해서 예랑이, 예신이 서로 보내 보세요!<br>누가 더 잘 아는지 비교해 봐요 🔥</p></div><div id="fx" class="fx"></div><h2>틀린 문제 다시 보기</h2><div id="wrong"></div><button class="big go" data-go="exam" id="again"><b>다시 풀기</b></button><button class="big go alt" data-go="dict"><b>📒 용어 정리본 보기</b><span>틀린 용어를 정리본에서 확인해요</span></button></section>
  <section id="dict" class="view"><button class="back go" data-go="home">← 처음으로</button><h1>결혼 준비 <mark>용어 정리본</mark></h1><p class="lead">쉬운 뜻 한 줄이랑 헷갈리는 포인트만 모았어요. 금액은 2026년 11월 기준이에요.</p> <nav class="tabs" role="tablist"><button role="tab" aria-selected="true" data-i="0">제일 헷갈리는 Top 10</button><button role="tab" aria-selected="false" data-i="1">기본 줄임말</button><button role="tab" aria-selected="false" data-i="2">웨딩홀</button><button role="tab" aria-selected="false" data-i="3">스튜디오, 사진</button><button role="tab" aria-selected="false" data-i="4">드레스</button><button role="tab" aria-selected="false" data-i="5">메이크업, 본식, 예복</button><button role="tab" aria-selected="false" data-i="6">예물, 예단, 양가</button><button role="tab" aria-selected="false" data-i="7">상담 때 물어볼 말</button></nav>
  <section class="panel on top" data-i="0"><h2>이것만 알아도 절반은 알아들어요</h2><div class="card"><b>토탈 vs 비토탈 스튜디오</b><p>토탈은 촬영 드레스, 헤어메이크업까지 스튜디오 안에서. 비토탈은 스튜디오는 촬영만, 드레스와 메이크업은 샵 따로</p><div class="pt">어느 쪽이든 본식 드레스, 메이크업은 별도인 경우가 많아요</div></div><div class="card"><b>스드메에 본식도 들어가나요?</b><p>계약마다 달라요. 촬영만인지 본식까지인지 견적서에서 확인</p><div class="pt">첫 상담 첫 질문으로 "본식 드레스와 메이크업도 포함인가요?"</div></div><div class="card"><b>드투, 지정, 촬영가봉, 본식가봉</b><p>드투는 샵 고르기, 지정은 투어 없이 바로 계약, 촬영가봉은 촬영 드레스 고르는 날, 본식가봉은 본식 드레스 고르는 날</p><div class="pt">가봉은 원래 수선이라는 뜻인데 결혼 준비에선 고르는 날로 써요</div></div><div class="card"><b>본식스냅, 원판, 서브스냅, 아이폰스냅, DVD</b><p>본식스냅은 메인 사진, 원판은 식 끝나고 찍는 단체사진, 서브와 아이폰은 추가 촬영, DVD는 영상</p><div class="pt">원판은 원본 파일이 아니에요</div></div><div class="card"><b>홀딩</b><p>마음에 든 드레스를 내 예식 날짜에 다른 신부가 못 입게 찜해 두기</p><div class="pt">몇 벌까지 되는지, 가봉 날 다 보여주는지 계약 전에 묻기</div></div><div class="card"><b>블랙라벨, 드레스 업그레이드</b><p>기본보다 비싼 상위 라인. 업그레이드는 추가금 없이 상위 라인으로 바꿔 주는 혜택</p><div class="pt">샵마다 기준이 달라요. 혜택 범위를 계약서에</div></div><div class="card"><b>원수 포함, 20p, 셀렉</b><p>원본+수정본 포함, 기본 보정본 20장. 셀렉은 보정할 사진 고르기</p><div class="pt">20장 넘게 고르면 장당 약 3.3만원</div></div><div class="card"><b>DVD 무편집 원본</b><p>편집하지 않은 원본 영상</p><div class="pt">녹화를 껐다 켠 구간은 원래 없어요. 넣을 장면은 계약서에</div></div><div class="card"><b>보증인원, 각보증</b><p>보증인원은 최소로 식대를 내기로 약속한 인원. 각보증은 신랑측, 신부측을 따로 세는 방식</p><div class="pt">200명 계약에 170명 오면 30명분(식대 10만원이면 300만원)도 내요</div></div><div class="card"><b>예단, 예물, 봉채비, 꾸밈비</b><p>예물은 둘이 주고받는 반지, 시계. 예단은 신부측이 신랑측 가족에게 보내는 선물. 봉채비는 예단 받고 돌려주는 돈. 꾸밈비는 신랑측이 신부 준비에 보태는 돈</p><div class="pt">모두 필수 아니에요. 상견례 전에 각자 부모님과 정리</div></div> </section>
  <section class="panel" data-i="1"><h2>기본 줄임말</h2><div class="dict"><div class="row"><b>예신 / 예랑</b><div><p>예비신부 / 예비신랑</p><div class="pt">예비쀼=예비부부</div></div></div><div class="row"><b>스드메</b><div><p>스튜디오+드레스+메이크업</p><div class="pt">본식 드레스, 메이크업까지 포함인지는 계약마다 다름</div></div></div><div class="row"><b>청모</b><div><p>청첩장 모임(청첩장 주는 식사 자리)</p><div class="pt">모바일청첩장(모청)과 헷갈림</div></div></div><div class="row"><b>모청</b><div><p>모바일 청첩장</p><div class="pt">사진 업로드용 보정본이 늦으면 사설 보정 맡기기도</div></div></div><div class="row"><b>혼주</b><div><p>신랑 신부의 부모님</p><div class="pt">결혼식을 주관하는 사람이라는 뜻</div></div></div><div class="row"><b>첫 혼사 / 초혼</b><div><p>집안에서 처음 치르는 자녀 결혼 / 개인의 첫 결혼</p><div class="pt">둘은 다른 말</div></div></div><div class="row"><b>워킹(워크인)</b><div><p>플래너 없이 직접 업체 방문, 계약</p><div class="pt">걸어 들어가서(walk-in)</div></div></div><div class="row"><b>동행 플래너</b><div><p>드투, 촬영 등 일정에 같이 가 주는 플래너</p><div class="pt">박람회 "동행" 옵션은 가격이 더 높음</div></div></div><div class="row"><b>비동행 플래너</b><div><p>앱, 전화로 예약, 일정 관리, 현장엔 안 감</p><div class="pt">견적이 더 낮은 편</div></div></div><div class="row"><b>박람회 당일계약혜택</b><div><p>그날 계약하면 주는 할인, 혜택</p><div class="pt">취소 시 처리, 중복 가능 여부 확인</div></div></div><div class="row"><b>가계약</b><div><p>날짜 잡아 두는 임시 예약금 계약</p><div class="pt">환불 조건 확인</div></div></div><div class="row"><b>지정업체 / 제휴할인</b><div><p>홀, 플랫폼이 정해둔 업체 / 제휴 조건 할인</p><div class="pt">지정 안 하면 할인 빠짐</div></div></div></div></section>
@@ -176,7 +187,7 @@ const bs=document.querySelectorAll('.tabs button'),ps=document.querySelectorAll(
 bs.forEach(b=>b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-selected',x===b));ps.forEach(p=>p.classList.toggle('on',p.dataset.i===b.dataset.i));b.scrollIntoView({inline:'center',block:'nearest'});window.scrollTo({top:document.querySelector('.tabs').offsetTop-4});});
 
 const $=id=>document.getElementById(id),qs=[...document.querySelectorAll('.q')],N=qs.length;
-const GD=[[20,'만점! 플래너 해도 되겠어요'],[15,'결혼 준비 우등생'],[10,'조금만 더 하면 우등생'],[5,'보충수업이 필요해요'],[0,'결혼 준비 입문반']];
+const GD=[[100,'💯 만점! 플래너 해도 되겠어요','상담 가서 업체 말 다 알아듣는 사람 🫡',4,'🎉💯✨🥳'],[75,'🎓 결혼 준비 우등생','이 정도면 상담 가서 안 털려요 😎',3,'🎉✨👏'],[50,'📚 조금만 더 하면 우등생','헷갈린 것만 정리본에서 한 번 보면 끝! 💪',2,'💪✨'],[25,'📝 보충수업이 필요해요','상담 가기 전에 정리본 꼭 보고 가요 🙏',1,'📝💦'],[0,'🐣 결혼 준비 입문반','괜찮아요, 다들 여기서 시작해요 🤗',0,'🐣💦']];
 let cur=0,score=0;
 const show=v=>{document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id===v));window.scrollTo(0,0);};
 const done=()=>qs.filter(q=>q.querySelector('.o.sel')).length;
@@ -188,13 +199,12 @@ qs.forEach((q,i)=>q.querySelectorAll('.o').forEach(b=>b.onclick=()=>{q.querySele
  if(i<N-1)setTimeout(()=>{if(cur===i){cur++;draw();}},350);}));
 $('prev').onclick=()=>{if(cur>0){cur--;draw();}};$('next').onclick=()=>{if(cur<N-1){cur++;draw();}};
 $('grade').onclick=()=>{score=0;const w=[];qs.forEach(q=>{const s=q.querySelector('.o.sel'),a=q.querySelector('.o.ans');if(s===a)score++;else{const c=q.cloneNode(true);c.classList.add('done','on');c.querySelector('.o.sel').classList.replace('sel','no');c.querySelector('.o.ans').classList.add('ok');w.push(c);}});
- $('pt').textContent=score*5;$('gd').textContent=GD.find(g=>score>=g[0])[1];$('wrong').replaceChildren(...w);
+ const P=score*5,g=GD.find(g=>P>=g[0]);$('gd').textContent=g[1];$('cm').textContent=g[2];$('ch').src=`c${g[3]}.png`;$('wrong').replaceChildren(...w);
+ $('marks').innerHTML=qs.map((q,i)=>`<span class="${q.querySelector('.o.sel')===q.querySelector('.o.ans')?'m ok':'m no'}"><i>${i+1}</i>${q.querySelector('.o.sel')===q.querySelector('.o.ans')?'⭕':'❌'}</span>`).join('');
+ let k=0;const t=setInterval(()=>{k=Math.min(P,k+5);$('pt').textContent=k;if(k>=P)clearInterval(t);},45);
+ $('fx').innerHTML=[...Array(24)].map((_,i)=>`<span style="left:${(i*37)%100}%;animation-delay:${(i%8)*0.12}s;font-size:${22+(i%3)*8}px">${[...g[4]][i%[...g[4]].length]}</span>`).join('');
  if(!w.length)$('wrong').textContent='틀린 문제가 없어요. 대단해요!';show('result');};
 document.querySelectorAll('.go').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.go==='exam')reset();show(b.dataset.go);}));
-$('share').onclick=async()=>{const nm=$('nm').value.trim()||'나';
- const t=`${nm}의 결혼 준비 용어 시험 결과: ${score*5}점 (${GD.find(g=>score>=g[0])[1]})\n너도 풀어 보고 점수 알려줘! 👉 ${location.href.split('#')[0]}`;
- try{if(navigator.share){await navigator.share({text:t});return;}}catch(e){return;}
- try{await navigator.clipboard.writeText(t);alert('결과를 복사했어요. 카톡에 붙여 넣어 보내 주세요!');}catch(e){prompt('이 글을 복사해서 보내 주세요',t);}};
 draw();
 </script>
 </body>
